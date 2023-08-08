@@ -4,7 +4,7 @@ using System.Text;
 
 public class Program
 {
-    const int ALPH_LEN = 26; // Define uma constante com o numero de letras no alfabeto
+    const int ALPH_LEN = 26; // Define uma constante com o número de letras no alfabeto
     // Define o Alfabeto em um vetor de char
     static char[] ALPHABET = new char[ALPH_LEN] { 'A', 'B', 'C', 'D',
         'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
@@ -13,20 +13,20 @@ public class Program
 
     static void Main(string[] args)
     {
-        var rot = 12; // Rotacao escolhida para a cifra [negativa - vai para esquerda no alfabeto e positiva para direita]
-        var filePath = ""; // Variavel do caminho do arquivo a ser Criptografado/Descriptografado
+        var rot = 12; // Rotação escolhida para a cifra [negativa - vai para esquerda no alfabeto e positiva para direita]
+        var filePath = ""; // Variável do caminho do arquivo a ser Criptografado/Descriptografado
         StreamReader? file = null;
 
         try 
         {
             //Solicita o arquivo ao cliente e verifica se o mesmo existe
-            Console.WriteLine("Seja bem vindo ao programa da Cifra de Cesar!!!");
+            Console.WriteLine("Seja bem vindo ao programa da Cifra de César!!!");
             Console.Write("Informe o arquivo a ser alterado: ");
             filePath = Console.ReadLine();
 
             if(!File.Exists(filePath))
             {
-                throw new Exception("Erro - Caminho nao encontrado");
+                throw new Exception("Erro - Caminho não encontrado");
             }
 
             file = new StreamReader(filePath); //Abre arquivo para leitura
@@ -36,7 +36,7 @@ public class Program
             var opt = char.ToUpper((char) Console.Read());
             while(opt != 'C' && opt != 'D')
             {
-                Console.WriteLine("Entrada invalida, digite [ C ] caso deseje criptografar o arquivo ou [ D ] caso queira descriptografa-lo! ");
+                Console.WriteLine("Entrada inválida, digite [ C ] caso deseje criptografar o arquivo ou [ D ] caso queira descriptografá-lo! ");
                 opt = char.ToUpper((char) Console.Read());
             }
 
@@ -49,8 +49,8 @@ public class Program
             var newFile = new StreamWriter(newFilePath);
             var line = file.ReadLine();
 
-            // Le linha por linha do arquivo base e gera a linha coincidente cirptografada ou descriptografada no novo arquivo
-            while(line != null)
+            // Lê linha por linha do arquivo base e gera a linha coincidente cirptografada ou descriptografada no novo arquivo
+            while (line != null)
             {
                 var newLine = new StringBuilder();
                 foreach(var c in line)
@@ -63,7 +63,7 @@ public class Program
             }
 
             newFile.Close();
-            Console.WriteLine(String.Format("Arquivo gerado com sucesso, segue caminho para o seu novo arquivo apos a {0}: {1}"
+            Console.WriteLine(String.Format("Arquivo gerado com sucesso, segue caminho para o seu novo arquivo após a {0}: {1}"
                 , opt == 'C' ? "criptografia" : "descriptografia",
                 newFilePath));
             
